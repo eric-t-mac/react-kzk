@@ -60,6 +60,17 @@ export default (props) => {
     })
   }
 
+  // 批量删除
+  const mulDelete = () => {
+    let id = ''
+    keys.map(ele=>id+=(';'+ele))
+    console.log('id:',id);
+    // 向后端传递由 id 组成的字符串，不能传数组
+    api.fetchGoodDel({id}).then(()=>{
+      setFilter(JSON.parse(JSON.stringify(filter)))
+    })
+  }
+
   const id = props.match.params.id
   const isAdd = id==='0'
   console.log('------idAdd', isAdd)

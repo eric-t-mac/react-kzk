@@ -33,7 +33,7 @@ function musicListAction(params) {
       // 这才是真正地把后端数据，发送到store中
       dispatch({
         type: type.AJAX_MUSIC_LIST,
-        payload: res.song.list,
+        payload: res.song.list?res.song.list:'',
       });
     });
   };

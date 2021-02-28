@@ -32,7 +32,7 @@ export default (props) => {
     
     return (
         <div className="onetwo">
-            <h1>onetwo</h1>
+            <h1>o131223</h1>
             <hr/>
 
             <Table dataSource={data}>

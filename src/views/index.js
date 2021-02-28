@@ -9,6 +9,7 @@ const GoodList = loadable(() => import("./good/GoodList"));
 const TwoTwo = loadable(() => import("./good/TwoTwo"));
 const KzkTest = loadable(() => import("./kzk/KzkTest"));
 const GoodAddOrEdit = loadable(() => import("./good/GoodAddOrEdit"));
+const Baidumap = loadable(()=>import("./kzk/Baidumap"))
 
 export default [
   // eslint-disable-line
@@ -81,6 +82,12 @@ export default [
         path: "/KzkTest",
         component: KzkTest,
       },
+      {
+        id: 1311,
+        text: "百度地图",
+        path: "/Baidumap",
+        component: Baidumap,
+      }
     ],
   },
 ];

@@ -9,7 +9,7 @@ import {
 
 import { Breadcrumb } from "antd";
 import routes from "@/views";
-import { HomeOutlined, UserOutlined } from "@ant-design/icons";
+import { HomeOutlined, UserOutlined, ExportOutlined } from "@ant-design/icons";
 
 // 问题：没有被Route组件直接包裹的React组件中，是没有路由API的。
 // 那该怎么办？
@@ -24,6 +24,7 @@ import { HomeOutlined, UserOutlined } from "@ant-design/icons";
 export default (props) => {
   const pathName = useSelector((store) => store.gtitle.pathName);
   let hash = document.location.hash.slice(1);
+  const history = useHistory()
   // console.log('---header props', props)
   // console.log('---header history', history)
   const list = routes.filter((ele) => {
@@ -31,6 +32,10 @@ export default (props) => {
       return ele.path === hash;
     });
   });
+  const logout = () => {
+    localStorage.removeItem('token')
+    location.reload()
+  }
   // var a;
   // a = list[0].children.filter((ele) => {
   //   return ele.text == pathName;
@@ -42,7 +47,7 @@ export default (props) => {
   // console.log("pathName:", path);
   return (
     <div className="qf-header" style={{ color: "white" }}>
-      <Breadcrumb style={{ color: "white" }}>
+      <Breadcrumb style={{ color: "white",float: 'left' }}>
         <Breadcrumb.Item href="" style={{ color: "white" }}>
           <HomeOutlined style={{ color: "white" }} />
         </Breadcrumb.Item>
@@ -52,6 +57,12 @@ export default (props) => {
         </Breadcrumb.Item>
         {/* <Breadcrumb.Item>{a.length === 0 ? "" : a[0].text}</Breadcrumb.Item> */}
       </Breadcrumb>
+      <div style={{textAlign: 'right', float: 'right'}}>
+        <ExportOutlined 
+          style={{color: 'white', fontSize: '26px'}}
+          onClick={()=>logout()}
+        />
+      </div>
     </div>
   );
 };
